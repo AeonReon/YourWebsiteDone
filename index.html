@@ -881,6 +881,61 @@
     box-shadow: 0 10px 30px rgba(200,168,75,0.3);
   }
 
+  /* ===== WHATSAPP FLOATING BUTTON ===== */
+  #whatsapp-fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: #25D366;
+    color: white;
+    border-radius: 50px;
+    padding: 14px 22px 14px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+    z-index: 9999;
+    transition: all 0.25s;
+    animation: fabPop 0.5s ease 2s both;
+  }
+
+  #whatsapp-fab:hover {
+    background: #20bc5a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(37,211,102,0.5);
+  }
+
+  @keyframes fabPop {
+    from { opacity: 0; transform: scale(0.7) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  /* WhatsApp inline button (in form section) */
+  .whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: white;
+    padding: 14px 28px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 2px;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .whatsapp-btn:hover {
+    background: #20bc5a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(37,211,102,0.35);
+  }
+
   /* ===== RESPONSIVE ===== */
   @media (max-width: 600px) {
     .hero-content { padding: 60px 24px 80px; }
@@ -1139,36 +1194,70 @@
     <p class="lead reveal">Fill in the form below and we'll be in touch within a few hours to confirm your order and get the details we need. It really is that simple.</p>
 
     <div class="contact-form reveal">
-      <div class="form-row">
-        <label>Your Name</label>
-        <input type="text" placeholder="First and last name">
+      <!-- Success message (hidden by default) -->
+      <div id="form-success" style="display:none; text-align:center; padding:40px 20px;">
+        <div style="font-size:3rem; margin-bottom:16px;">✅</div>
+        <div style="font-family:'Bebas Neue',sans-serif; font-size:2rem; color:var(--green); margin-bottom:12px;">Message Sent!</div>
+        <p style="color:#555; line-height:1.7;">Thanks — we've received your details and will be in touch within a few hours. Keep an eye on your inbox (and spam just in case).<br><br>
+        Or if you'd rather chat straight away, <a href="https://wa.me/447594859759" target="_blank" style="color:var(--green);font-weight:700;">message us on WhatsApp →</a></p>
       </div>
-      <div class="form-row">
-        <label>Business Name</label>
-        <input type="text" placeholder="What's your business called?">
-      </div>
-      <div class="form-row">
-        <label>Email Address</label>
-        <input type="email" placeholder="Where should we send updates?">
-      </div>
-      <div class="form-row">
-        <label>Phone Number</label>
-        <input type="tel" placeholder="Best number to reach you on">
-      </div>
-      <div class="form-row">
-        <label>What Does Your Business Do?</label>
-        <textarea placeholder="Tell us a bit about your business — the more detail, the better your website will be..."></textarea>
-      </div>
-      <div class="form-row">
-        <label>Do you have a domain name already?</label>
-        <select>
-          <option value="">— Select one —</option>
-          <option>Yes, I have a domain</option>
-          <option>No, I need help getting one</option>
-          <option>Not sure</option>
-        </select>
-      </div>
-      <button class="form-submit" onclick="handleSubmit(this)">Send My Details — Let's Get Started →</button>
+
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <!-- Web3Forms access key -->
+        <input type="hidden" name="access_key" value="b5edaf3f-1c5f-42f4-b219-70218bf7b3e1">
+        <!-- Redirect off — we handle success in JS -->
+        <input type="hidden" name="redirect" value="false">
+        <!-- Custom subject line -->
+        <input type="hidden" name="subject" value="New Website Enquiry — £197 Package">
+        <!-- Bot trap: honeypot field (must stay empty) -->
+        <input type="text" name="botcheck" style="display:none !important; visibility:hidden; position:absolute; left:-9999px;" tabindex="-1" autocomplete="off">
+        <!-- Time-based bot trap: filled by JS after page load -->
+        <input type="hidden" name="form_token" id="form_token" value="">
+
+        <div class="form-row">
+          <label>Your Name <span style="color:var(--red)">*</span></label>
+          <input type="text" name="name" placeholder="First and last name" required>
+        </div>
+        <div class="form-row">
+          <label>Business Name <span style="color:var(--red)">*</span></label>
+          <input type="text" name="business_name" placeholder="What's your business called?" required>
+        </div>
+        <div class="form-row">
+          <label>Email Address <span style="color:var(--red)">*</span></label>
+          <input type="email" name="email" placeholder="Where should we send updates?" required>
+        </div>
+        <div class="form-row">
+          <label>Phone Number</label>
+          <input type="tel" name="phone" placeholder="Best number to reach you on">
+        </div>
+        <div class="form-row">
+          <label>What Does Your Business Do? <span style="color:var(--red)">*</span></label>
+          <textarea name="business_description" placeholder="Tell us a bit about your business — the more detail, the better your website will be..." required></textarea>
+        </div>
+        <div class="form-row">
+          <label>Do you have a domain name already?</label>
+          <select name="has_domain">
+            <option value="">— Select one —</option>
+            <option>Yes, I have a domain</option>
+            <option>No, I need help getting one</option>
+            <option>Not sure</option>
+          </select>
+        </div>
+
+        <div id="form-error" style="display:none; background:#fff0ee; border:1px solid var(--red); color:var(--red); padding:12px 16px; font-size:0.9rem; margin-bottom:16px; line-height:1.5;"></div>
+
+        <button type="submit" class="form-submit" id="submit-btn">Send My Details — Let's Get Started →</button>
+        <p style="font-size:0.75rem; color:#aaa; margin-top:12px; text-align:center;">We respect your privacy. No spam, ever.</p>
+      </form>
+    </div>
+
+    <!-- WhatsApp alt CTA -->
+    <div class="reveal" style="text-align:center; margin-top:40px;">
+      <p style="font-size:0.95rem; color:#777; margin-bottom:16px;">Prefer to chat first? Message us directly on WhatsApp — we're pretty quick.</p>
+      <a href="https://wa.me/447594859759?text=Hi%2C%20I'm%20interested%20in%20getting%20a%20website%20built%20for%20my%20business" target="_blank" class="whatsapp-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat on WhatsApp
+      </a>
     </div>
   </div>
 </section>
@@ -1184,11 +1273,12 @@
 
 <footer>
   <p>© 2025 — Professional Websites, Done For You. One payment. Free hosting. Fast turnaround.<br>
-  Changes from £29 · No monthly fees · No contracts · Questions? Reach out anytime.</p>
+  Changes from £29 · No monthly fees · No contracts ·
+  <a href="https://wa.me/447594859759?text=Hi%2C%20I'm%20interested%20in%20getting%20a%20website%20for%20my%20business" target="_blank" style="color:rgba(255,255,255,0.5); text-decoration:underline;">WhatsApp Us</a></p>
 </footer>
 
 <script>
-  // Scroll reveal
+  // ===== SCROLL REVEAL =====
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1198,10 +1288,9 @@
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
   reveals.forEach(el => observer.observe(el));
 
-  // FAQ accordion
+  // ===== FAQ ACCORDION =====
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => {
       const item = q.closest('.faq-item');
@@ -1211,13 +1300,92 @@
     });
   });
 
-  // Form submit handler
-  function handleSubmit(btn) {
-    btn.textContent = '✓ Message Sent! We\'ll Be In Touch Shortly.';
-    btn.style.background = '#2a7a4b';
-    btn.style.color = '#fff';
-    btn.disabled = true;
-  }
+  // ===== SPAM PROTECTION: time-based token =====
+  // Bots usually submit immediately — we track page load time
+  // A real user takes at least 3 seconds to fill out a form
+  const pageLoadTime = Date.now();
+  setTimeout(() => {
+    // Only set the token after 3 seconds — bots won't wait
+    const token = btoa(pageLoadTime.toString()).replace(/=/g, '');
+    document.getElementById('form_token').value = token;
+  }, 3000);
+
+  // ===== WEB3FORMS SUBMISSION =====
+  const form = document.getElementById('contact-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const errorBox = document.getElementById('form-error');
+  const successBox = document.getElementById('form-success');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    errorBox.style.display = 'none';
+
+    // --- Spam checks ---
+    // 1. Honeypot check
+    if (form.querySelector('[name="botcheck"]').value !== '') {
+      return; // Silent fail for bots
+    }
+
+    // 2. Time-based check — must have waited at least 3 seconds
+    const token = document.getElementById('form_token').value;
+    if (!token) {
+      errorBox.textContent = 'Please take a moment to fill in the form fully before submitting.';
+      errorBox.style.display = 'block';
+      return;
+    }
+
+    // 3. Basic validation
+    const name = form.querySelector('[name="name"]').value.trim();
+    const email = form.querySelector('[name="email"]').value.trim();
+    const desc = form.querySelector('[name="business_description"]').value.trim();
+    if (!name || !email || !desc) {
+      errorBox.textContent = 'Please fill in your name, email, and business description before submitting.';
+      errorBox.style.display = 'block';
+      return;
+    }
+    const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRe.test(email)) {
+      errorBox.textContent = 'That email address doesn\'t look right — please double-check it.';
+      errorBox.style.display = 'block';
+      return;
+    }
+
+    // --- Submit ---
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: data
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        form.style.display = 'none';
+        successBox.style.display = 'block';
+        successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        throw new Error(json.message || 'Submission failed');
+      }
+    } catch (err) {
+      errorBox.textContent = 'Something went wrong sending your message. Please try again, or message us on WhatsApp directly.';
+      errorBox.style.display = 'block';
+      submitBtn.textContent = 'Send My Details — Let\'s Get Started →';
+      submitBtn.disabled = false;
+    }
+  });
 </script>
+
+<!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+<a href="https://wa.me/447594859759?text=Hi%2C%20I'm%20interested%20in%20getting%20a%20website%20for%20my%20business" 
+   target="_blank" 
+   id="whatsapp-fab" 
+   title="Chat on WhatsApp"
+   aria-label="Chat on WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>Chat on WhatsApp</span>
+</a>
 </body>
 </html>
