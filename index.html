@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Your Business Website — Done For You in 24–72 Hours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #fafafa;
+    --cream: #f5f0e8;
+    --gold: #c8a84b;
+    --gold-light: #e8c96b;
+    --red: #d63c2a;
+    --green: #2a7a4b;
+    --green-light: #3aaa6a;
+    --mid: #2a2a2a;
+    --text: #1a1a1a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ===== NOISE TEXTURE OVERLAY ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--black);
+    color: var(--white);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 10%, #1a1206 0%, transparent 70%),
+                radial-gradient(ellipse 50% 80% at 80% 50%, #0f1f15 0%, transparent 70%),
+                var(--black);
+  }
+
+  .hero-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200,168,75,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200,168,75,0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 40px 100px;
+    text-align: center;
+  }
+
+  .pre-headline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .pre-headline::before,
+  .pre-headline::after {
+    content: '';
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.4s forwards;
+  }
+
+  .hero h1 .accent {
+    color: var(--gold);
+    font-style: italic;
+    font-family: 'Instrument Serif', serif;
+  }
+
+  .hero h1 .strike {
+    position: relative;
+    color: rgba(255,255,255,0.25);
+  }
+  .hero h1 .strike::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    height: 3px;
+    background: var(--red);
+  }
+
+  .hero-sub {
+    font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+    line-height: 1.6;
+    color: rgba(255,255,255,0.75);
+    max-width: 640px;
+    margin: 0 auto 52px;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+
+  .hero-sub strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .hero-price-box {
+    display: inline-block;
+    border: 2px solid var(--gold);
+    padding: 32px 60px;
+    margin-bottom: 44px;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.8s forwards;
+  }
+
+  .hero-price-box::before {
+    content: 'ONE TIME ONLY';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    padding: 3px 12px;
+  }
+
+  .price-old {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.35);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .price-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: var(--gold-light);
+    line-height: 1;
+  }
+
+  .price-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    padding: 20px 56px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    position: relative;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1s forwards;
+  }
+
+  .hero-cta::after {
+    content: '→';
+    margin-left: 10px;
+    transition: margin 0.2s;
+  }
+
+  .hero-cta:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(200,168,75,0.3);
+  }
+
+  .hero-cta:hover::after { margin-left: 16px; }
+
+  .hero-note {
+    display: block;
+    margin-top: 18px;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.05em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.1s forwards;
+  }
+
+  /* ===== TICKER ===== */
+  .ticker {
+    background: var(--gold);
+    color: var(--black);
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 25s linear infinite;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .ticker-inner span {
+    margin: 0 40px;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    position: relative;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ===== PAIN SECTION ===== */
+  .pain {
+    background: var(--white);
+    padding: 100px 0;
+  }
+
+  .section-kicker {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .pain h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.95;
+    margin-bottom: 40px;
+    color: var(--black);
+  }
+
+  .pain p {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: #333;
+    margin-bottom: 24px;
+  }
+
+  .pain p strong {
+    color: var(--black);
+  }
+
+  .pain-list {
+    list-style: none;
+    margin: 40px 0;
+  }
+
+  .pain-list li {
+    padding: 16px 0 16px 40px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #333;
+  }
+
+  .pain-list li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: var(--red);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  /* ===== SOLUTION ===== */
+  .solution {
+    background: var(--black);
+    color: var(--white);
+    padding: 100px 0;
+  }
+
+  .solution h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.95;
+    margin-bottom: 16px;
+  }
+
+  .solution h2 .gold { color: var(--gold); }
+
+  .solution .lead {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 60px;
+    max-width: 700px;
+  }
+
+  .how-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2px;
+    margin: 60px 0;
+  }
+
+  .step {
+    background: rgba(255,255,255,0.04);
+    padding: 40px 32px;
+    position: relative;
+    border: 1px solid rgba(200,168,75,0.15);
+    transition: background 0.3s;
+  }
+
+  .step:hover {
+    background: rgba(200,168,75,0.08);
+  }
+
+  .step-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    color: rgba(200,168,75,0.2);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--gold-light);
+    letter-spacing: 0.02em;
+  }
+
+  .step p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.6);
+  }
+
+  /* ===== WHAT YOU GET ===== */
+  .what-you-get {
+    background: var(--cream);
+    padding: 100px 0;
+  }
+
+  .what-you-get h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin-bottom: 16px;
+    line-height: 0.95;
+  }
+
+  .what-you-get .sub {
+    font-size: 1.15rem;
+    color: #555;
+    margin-bottom: 60px;
+    font-style: italic;
+    font-family: 'Instrument Serif', serif;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+
+  .feature-card {
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 36px 28px;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .feature-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--black);
+  }
+
+  .feature-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #555;
+  }
+
+  .feature-card.highlight {
+    background: var(--black);
+    color: var(--white);
+    border-color: var(--gold);
+  }
+
+  .feature-card.highlight h3 { color: var(--gold); }
+  .feature-card.highlight p { color: rgba(255,255,255,0.65); }
+
+  /* ===== GUARANTEE ===== */
+  .guarantee {
+    background: var(--green);
+    color: var(--white);
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .guarantee::before {
+    content: 'GUARANTEE';
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 8rem;
+    color: rgba(255,255,255,0.05);
+    letter-spacing: 0.1em;
+    pointer-events: none;
+  }
+
+  .guarantee-inner {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .guarantee-badge {
+    flex-shrink: 0;
+    width: 140px;
+    height: 140px;
+    border: 3px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .guarantee-badge .big { 
+    font-family: 'Bebas Neue', sans-serif; 
+    font-size: 2.5rem; 
+    line-height: 1; 
+    color: rgba(255,255,255,0.9);
+  }
+  .guarantee-badge .small { 
+    font-size: 0.65rem; 
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+  }
+
+  .guarantee-text h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .guarantee-text p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* ===== PRICING ===== */
+  .pricing {
+    background: var(--white);
+    padding: 100px 0;
+    text-align: center;
+  }
+
+  .pricing h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.95;
+    margin-bottom: 12px;
+  }
+
+  .pricing .sub {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 60px;
+  }
+
+  .price-card {
+    max-width: 520px;
+    margin: 0 auto 48px;
+    background: var(--black);
+    color: var(--white);
+    padding: 60px 48px;
+    border: 2px solid var(--gold);
+    position: relative;
+  }
+
+  .price-card::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--black);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    padding: 4px 16px;
+  }
+
+  .price-card .p-name {
+    font-size: 0.8rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .price-card .p-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 6rem;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  .price-card .p-amount span {
+    font-size: 2.5rem;
+    vertical-align: super;
+    color: var(--gold);
+  }
+
+  .price-card .p-once {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+
+  .price-includes {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+
+  .price-includes li {
+    padding: 10px 0 10px 32px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .price-includes li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green-light);
+    font-weight: 700;
+  }
+
+  .price-includes li strong { color: var(--white); }
+
+  .btn-primary {
+    display: block;
+    width: 100%;
+    background: var(--gold);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 1.05rem;
+    padding: 20px 40px;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(200,168,75,0.35);
+  }
+
+  .additional-note {
+    max-width: 480px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    color: #888;
+    line-height: 1.7;
+    text-align: center;
+  }
+
+  .additional-note strong { color: var(--black); }
+
+  /* ===== OBJECTIONS ===== */
+  .objections {
+    background: var(--cream);
+    padding: 100px 0;
+  }
+
+  .objections h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 48px;
+    line-height: 0.95;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding: 28px 0;
+  }
+
+  .faq-q {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-q::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--gold);
+    flex-shrink: 0;
+    margin-left: 20px;
+  }
+
+  .faq-a {
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: #555;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .faq-item.open .faq-a {
+    max-height: 300px;
+  }
+
+  .faq-item.open .faq-q::after {
+    content: '−';
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta {
+    background: var(--black);
+    color: var(--white);
+    padding: 120px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 100%, rgba(200,168,75,0.12) 0%, transparent 70%);
+  }
+
+  .final-cta h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.92;
+    margin-bottom: 28px;
+    position: relative;
+  }
+
+  .final-cta h2 .gold { color: var(--gold); }
+
+  .final-cta p {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+    margin: 0 auto 52px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  .final-cta .hero-cta {
+    opacity: 1;
+    animation: none;
+    font-size: 1.2rem;
+    padding: 24px 70px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--black);
+    color: rgba(255,255,255,0.3);
+    text-align: center;
+    padding: 32px;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== CONTACT FORM ===== */
+  .contact-section {
+    background: var(--cream);
+    padding: 100px 0;
+    text-align: center;
+  }
+
+  .contact-section h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 0.95;
+    margin-bottom: 16px;
+  }
+
+  .contact-section .lead {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 48px;
+    font-style: italic;
+    font-family: 'Instrument Serif', serif;
+  }
+
+  .contact-form {
+    max-width: 560px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 1px solid rgba(0,0,0,0.08);
+    padding: 48px 40px;
+    text-align: left;
+  }
+
+  .form-row {
+    margin-bottom: 20px;
+  }
+
+  .form-row label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  .form-row input,
+  .form-row textarea,
+  .form-row select {
+    width: 100%;
+    border: 1.5px solid #ddd;
+    padding: 14px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    color: var(--text);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-row input:focus,
+  .form-row textarea:focus,
+  .form-row select:focus {
+    border-color: var(--gold);
+  }
+
+  .form-row textarea { min-height: 100px; resize: vertical; }
+
+  .form-submit {
+    display: block;
+    width: 100%;
+    background: var(--gold);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 1rem;
+    padding: 18px 40px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(200,168,75,0.3);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .hero-content { padding: 60px 24px 80px; }
+    .hero-price-box { padding: 24px 28px; }
+    .price-main { font-size: 3.5rem; }
+    .guarantee-inner { flex-direction: column; gap: 28px; }
+    .guarantee-badge { width: 100px; height: 100px; }
+    .contact-form { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-content">
+    <div class="pre-headline">For Local Businesses Ready to Get Online</div>
+
+    <h1>
+      Your Business<br>
+      Deserves a<br>
+      <span class="accent">Real Website.</span><br>
+      Not a Monthly Bill.
+    </h1>
+
+    <p class="hero-sub">
+      We build you a <strong>professional, fully-functioning website</strong> — customised for your business, live and online — in as little as <strong>24–72 hours.</strong> You pay once. We host it for free. Forever.
+    </p>
+
+    <div class="hero-price-box">
+      <div class="price-old">Agencies charge £2,000–£5,000</div>
+      <div class="price-main">£197</div>
+      <div class="price-desc">Complete. Done. Yours. No monthly fees.</div>
+    </div>
+
+    <a href="#contact" class="hero-cta">Yes — I Want My Website</a>
+    <span class="hero-note">No contracts. No hidden fees. No recurring charges. Ever.</span>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>✦ 24–72 HOUR TURNAROUND</span>
+    <span>✦ FREE HOSTING — FOREVER</span>
+    <span>✦ NO MONTHLY FEES</span>
+    <span>✦ ONE SIMPLE PAYMENT OF £197</span>
+    <span>✦ FULLY DONE FOR YOU</span>
+    <span>✦ CHANGES JUST £29</span>
+    <span>✦ 24–72 HOUR TURNAROUND</span>
+    <span>✦ FREE HOSTING — FOREVER</span>
+    <span>✦ NO MONTHLY FEES</span>
+    <span>✦ ONE SIMPLE PAYMENT OF £197</span>
+    <span>✦ FULLY DONE FOR YOU</span>
+    <span>✦ CHANGES JUST £29</span>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="container">
+    <span class="section-kicker reveal">Sound familiar?</span>
+    <h2 class="reveal">Every Quote Feels Like a Punch in the Face.</h2>
+
+    <p class="reveal">You know your business needs a website. You've known it for months — maybe years. But every time you look into it, you get hit with the same thing:</p>
+
+    <ul class="pain-list reveal">
+      <li>Agencies quoting you £1,500... £3,000... £5,000+ just to get started</li>
+      <li>Web builders that promise "easy" but leave you staring at a screen for hours</li>
+      <li>Monthly subscriptions of £20, £30, £50 that never seem to end</li>
+      <li>Waiting weeks — sometimes months — for anyone to even start your site</li>
+      <li>Developers who disappear the moment they've cashed your cheque</li>
+    </ul>
+
+    <p class="reveal">
+      Here's the thing: <strong>getting a professional website online should not be this hard or this expensive.</strong> Most small businesses don't need a complex system. They need something that looks great, works perfectly, and is live — fast.
+    </p>
+
+    <p class="reveal" style="font-family: 'Instrument Serif', serif; font-style: italic; font-size: 1.3rem; color: #222; margin-top: 8px;">
+      That's exactly what we built this for.
+    </p>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution">
+  <div class="container">
+    <span class="section-kicker reveal" style="color: var(--gold);">The Simplest Offer in the Room</span>
+    <h2 class="reveal">You Tell Us About<br>Your Business.<br><span class="gold">We Build Your Website.</span></h2>
+
+    <p class="lead reveal">No back-and-forth. No steep learning curve. No waiting months. You give us the basics — we take care of everything else and have you online, looking professional, before the week is out.</p>
+
+    <div class="how-steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>You Reach Out</h3>
+        <p>Fill in a simple form with your business name, what you do, and any details you'd like included. That's it.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>We Build It</h3>
+        <p>Our team creates a clean, professional, mobile-ready website tailored to your business — no templates that look like everyone else's.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>You Go Live</h3>
+        <p>Within 24–72 hours, your website is live, hosted, and working. Customers can find you. Job done.</p>
+      </div>
+    </div>
+
+    <p class="reveal" style="font-size: 1.15rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-top: 20px;">
+      Want a change down the road? No problem. Each update is a flat <strong style="color: var(--gold-light);">£29</strong> — no subscription, no ongoing fees. And if you never need a change? Then you genuinely never pay us another penny.
+    </p>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="what-you-get">
+  <div class="container">
+    <span class="section-kicker reveal">Everything Included</span>
+    <h2 class="reveal">Here's What You Get<br>for £197</h2>
+    <p class="sub reveal">No extras. No upsells. No surprises.</p>
+
+    <div class="features-grid reveal">
+      <div class="feature-card highlight">
+        <span class="feature-icon">🚀</span>
+        <h3>24–72 Hour Launch</h3>
+        <p>From payment to live website in under three days. Possibly before the end of the week.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎨</span>
+        <h3>Custom Design</h3>
+        <p>Built for YOUR business. Your brand, your services, your contact details — everything personalised.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📱</span>
+        <h3>Mobile-Ready</h3>
+        <p>Looks stunning and works perfectly on every phone, tablet, and desktop.</p>
+      </div>
+      <div class="feature-card highlight">
+        <span class="feature-icon">☁️</span>
+        <h3>Free Hosting — Forever</h3>
+        <p>We host your website at absolutely no charge. No monthly bills. Not now, not ever.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔒</span>
+        <h3>SSL Security</h3>
+        <p>Your site comes with HTTPS security built in — so Google trusts it and your customers feel safe.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💬</span>
+        <h3>Contact Form Included</h3>
+        <p>Make it easy for customers to reach you directly from your site.</p>
+      </div>
+    </div>
+
+    <div class="reveal" style="background: var(--black); color: var(--white); padding: 40px; text-align: center; max-width: 620px; margin: 0 auto;">
+      <div style="font-family: 'Bebas Neue', sans-serif; font-size: 1.3rem; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 16px;">Need a Change After Launch?</div>
+      <div style="font-family: 'Bebas Neue', sans-serif; font-size: 3.5rem; color: var(--white); line-height: 1; margin-bottom: 8px;">£29 Per Update</div>
+      <p style="font-size: 0.95rem; color: rgba(255,255,255,0.6); line-height: 1.6;">New phone number, updated services, a new photo — whatever you need. One flat fee, no subscription. And if you never need a change? <em style="color: rgba(255,255,255,0.8);">You never pay us another penny.</em></p>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <div class="container">
+    <div class="guarantee-inner reveal">
+      <div class="guarantee-badge">
+        <div class="big">100%</div>
+        <div class="small">Satisfaction<br>Guaranteed</div>
+      </div>
+      <div class="guarantee-text">
+        <h3>If You're Not Happy,<br>We Make It Right.</h3>
+        <p>If your website doesn't look and feel exactly the way you hoped — tell us. We'll work with you until you're proud of it. Simple as that. We want you talking about us to every business owner you know. That only happens if we deliver something brilliant.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="container">
+    <span class="section-kicker reveal">Simple Transparent Pricing</span>
+    <h2 class="reveal">One Price. Everything Included.</h2>
+    <p class="sub reveal">No tiers. No catch. No monthly fees.</p>
+
+    <div class="price-card reveal">
+      <div class="p-name">Your Business Website — Done For You</div>
+      <div class="p-amount"><span>£</span>197</div>
+      <div class="p-once">One-time payment only</div>
+      <ul class="price-includes">
+        <li><strong>Custom website built around your business</strong></li>
+        <li>Professional design — mobile and desktop ready</li>
+        <li><strong>Free hosting included — forever, no monthly fees</strong></li>
+        <li>SSL security certificate</li>
+        <li>Contact form and all your business details</li>
+        <li><strong>Live in 24–72 hours</strong></li>
+        <li>Updates whenever you need them — just £29 each</li>
+        <li>No contracts. No tie-ins. No recurring charges. <strong>Ever.</strong></li>
+      </ul>
+      <a href="#contact" class="btn-primary">Get My Website Now — £197</a>
+    </div>
+
+    <p class="additional-note reveal">
+      That's less than a single month at most web agencies. Less than a dinner out for two. And unlike everything else — you pay it once, and <strong>your website is yours for life.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- OBJECTIONS (FAQ) -->
+<section class="objections">
+  <div class="container">
+    <span class="section-kicker reveal">Questions</span>
+    <h2 class="reveal">Still Got Questions?<br>We've Got Answers.</h2>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">Is free hosting actually free, or will fees kick in later?</div>
+      <div class="faq-a">100% free. We mean it. There are no hidden costs, no trial periods, and nothing that kicks in after 6 or 12 months. Your website is hosted on our infrastructure at no charge to you — ever. The only time you pay us after the initial £197 is if you ask for a change, and that's a flat £29 each time.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">What information do I need to give you to get started?</div>
+      <div class="faq-a">Just the basics: your business name, what you do, how to contact you, and anything specific you'd like on the site (services, about you, photos, etc.). You don't need to be technical — just tell us about your business like you'd tell a friend, and we'll handle the rest.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">Will my website actually look professional — or like a template?</div>
+      <div class="faq-a">Every site we build is tailored to your business specifically. We're not slapping your name on a generic template and calling it done. We build it to reflect your brand, your services, and your customers. The goal is that when people land on your site, they trust you immediately.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">What if I want to make changes after it goes live?</div>
+      <div class="faq-a">Each update or change is just £29 — no ongoing subscription required. Need to update your phone number? £29. Want to add a new service? £29. Change your opening hours? £29. If you never need a change, you never pay us another penny beyond the original £197.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">How quickly can my website actually be live?</div>
+      <div class="faq-a">Our turnaround is 24 to 72 hours from when you send us your details. In most cases, we're faster than that. We know your time is valuable — that's why we built the whole process to be as fast as possible.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">Do I need a domain name?</div>
+      <div class="faq-a">If you already have a domain (e.g. yourname.co.uk), we'll connect your website to it. If you don't have one yet, just let us know and we can advise on the easiest way to get one sorted — they typically cost £10–£15/year from a registrar, which you'd own yourself.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT FORM -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <span class="section-kicker reveal">Let's Get Started</span>
+    <h2 class="reveal">Ready for Your Website?<br>Tell Us About Your Business.</h2>
+    <p class="lead reveal">Fill in the form below and we'll be in touch within a few hours to confirm your order and get the details we need. It really is that simple.</p>
+
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <label>Your Name</label>
+        <input type="text" placeholder="First and last name">
+      </div>
+      <div class="form-row">
+        <label>Business Name</label>
+        <input type="text" placeholder="What's your business called?">
+      </div>
+      <div class="form-row">
+        <label>Email Address</label>
+        <input type="email" placeholder="Where should we send updates?">
+      </div>
+      <div class="form-row">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="Best number to reach you on">
+      </div>
+      <div class="form-row">
+        <label>What Does Your Business Do?</label>
+        <textarea placeholder="Tell us a bit about your business — the more detail, the better your website will be..."></textarea>
+      </div>
+      <div class="form-row">
+        <label>Do you have a domain name already?</label>
+        <select>
+          <option value="">— Select one —</option>
+          <option>Yes, I have a domain</option>
+          <option>No, I need help getting one</option>
+          <option>Not sure</option>
+        </select>
+      </div>
+      <button class="form-submit" onclick="handleSubmit(this)">Send My Details — Let's Get Started →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2 class="reveal">Your Business.<br>Online. <span class="gold">This Week.</span></h2>
+    <p class="reveal">For a one-time payment of £197, your website is built, live, and working — with free hosting included, forever. No monthly fees. No surprises. No excuses left to put it off.</p>
+    <a href="#contact" class="hero-cta reveal" style="opacity:1;animation:none;">I Want My Website — £197</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 — Professional Websites, Done For You. One payment. Free hosting. Fast turnaround.<br>
+  Changes from £29 · No monthly fees · No contracts · Questions? Reach out anytime.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Form submit handler
+  function handleSubmit(btn) {
+    btn.textContent = '✓ Message Sent! We\'ll Be In Touch Shortly.';
+    btn.style.background = '#2a7a4b';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
