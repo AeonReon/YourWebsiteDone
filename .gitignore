@@ -1,0 +1,8 @@
+.env
+.DS_Store
+*.DS_Store
+node_modules/
+*.pdf
+keys.txt
+RFWlanding.txt
+past version/
