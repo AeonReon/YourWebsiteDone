@@ -781,7 +781,9 @@ footer a:hover { text-decoration: underline; }
 
 <!-- ===== NAV BAR ===== -->
 <nav class="navbar">
-  <a href="#top" class="nav-logo">Real<span>Fast</span>Website</a>
+  <a href="#top" class="nav-logo">
+    <img src="images/realfastlogo.png" alt="RealFastWebsite" style="height:40px; width:auto; display:block;">
+  </a>
   <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -934,7 +936,10 @@ footer a:hover { text-decoration: underline; }
 <!-- ===== COMPARISON TABLE — Dark ===== -->
 <section class="section comparison" id="compare">
   <div class="container">
-    <h2 class="fade-up">Stop Paying Thousands <span class="gold">for a Business Website</span></h2>
+    <!-- Cost comparison heading image -->
+    <div class="fade-up" style="text-align:center; margin-bottom:35px;">
+      <img src="images/what-does-a-website-cost.jpg" alt="What Does a Website Really Cost?" style="max-width:100%; height:auto; border-radius:8px;">
+    </div>
     <div class="fade-up">
       <table class="comp-table">
         <thead>
