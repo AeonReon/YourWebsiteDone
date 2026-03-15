@@ -26,9 +26,9 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --gold: #c9a84c;
-  --gold-light: #e0c76a;
-  --gold-dark: #a8892e;
+  --gold: #C79A32;
+  --gold-light: #d4a83e;
+  --gold-dark: #9e7920;
   --black: #111111;
   --dark: #1a1a1a;
   --dark-card: #222222;
@@ -114,7 +114,7 @@ body {
 .nav-links a:hover { color: var(--gold); }
 
 .nav-cta {
-  background: #FCF98B !important;
+  background: #C79A32 !important;
   color: var(--black) !important;
   font-family: var(--font-heading) !important;
   font-weight: 700 !important;
@@ -126,7 +126,7 @@ body {
   transition: background 0.3s, transform 0.2s;
 }
 
-.nav-cta:hover { background: #fff7a0 !important; transform: translateY(-1px); }
+.nav-cta:hover { background: #d4a83e !important; transform: translateY(-1px); }
 
 .nav-toggle {
   display: none;
@@ -207,7 +207,7 @@ h3 {
 
 .cta-btn {
   display: inline-block;
-  background: #FCF98B;
+  background: #C79A32;
   color: var(--black);
   font-family: var(--font-heading);
   font-weight: 700;
@@ -220,13 +220,13 @@ h3 {
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(252, 249, 139, 0.3);
+  box-shadow: 0 4px 20px rgba(199, 154, 50, 0.3);
 }
 
 .cta-btn:hover {
-  background: #fff7a0;
+  background: #d4a83e;
   transform: translateY(-2px);
-  box-shadow: 0 6px 30px rgba(252, 249, 139, 0.5);
+  box-shadow: 0 6px 30px rgba(199, 154, 50, 0.5);
 }
 
 .gold-line {
@@ -247,8 +247,8 @@ h3 {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(ellipse at 30% 20%, rgba(201,168,76,0.06) 0%, transparent 60%),
-              radial-gradient(ellipse at 80% 80%, rgba(201,168,76,0.04) 0%, transparent 50%);
+  background: radial-gradient(ellipse at 30% 20%, rgba(199,154,50,0.06) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 80%, rgba(199,154,50,0.04) 0%, transparent 50%);
   pointer-events: none;
 }
 
@@ -327,7 +327,7 @@ h3 {
   content: '';
   position: absolute;
   top: -50%; left: -20%; width: 140%; height: 200%;
-  background: radial-gradient(ellipse at 50% 30%, rgba(201,168,76,0.07) 0%, transparent 55%);
+  background: radial-gradient(ellipse at 50% 30%, rgba(199,154,50,0.07) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -368,7 +368,7 @@ h3 {
   text-align: left;
   font-weight: 600;
   color: var(--gold-light);
-  background: rgba(201, 168, 76, 0.06);
+  background: rgba(199, 154, 50, 0.06);
 }
 
 .comp-table .our-price { color: var(--gold); font-weight: 700; font-size: 1.3rem; }
@@ -473,7 +473,7 @@ h3 {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: radial-gradient(ellipse at 40% 30%, rgba(201,168,76,0.05) 0%, transparent 55%);
+  background: radial-gradient(ellipse at 40% 30%, rgba(199,154,50,0.05) 0%, transparent 55%);
   pointer-events: none;
 }
 
@@ -499,7 +499,7 @@ h3 {
 
 .portfolio-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 40px rgba(201,168,76,0.15);
+  box-shadow: 0 10px 40px rgba(199,154,50,0.15);
   border-color: var(--gold);
 }
 
@@ -572,7 +572,7 @@ h3 {
   content: '';
   position: absolute;
   top: -30%; right: -10%; width: 50%; height: 160%;
-  background: radial-gradient(ellipse, rgba(201,168,76,0.04) 0%, transparent 60%);
+  background: radial-gradient(ellipse, rgba(199,154,50,0.04) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -744,6 +744,20 @@ footer a:hover { text-decoration: underline; }
 @media (max-width: 480px) {
   .portfolio-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== REVEAL BUTTON (anti-spam) ===== */
+.reveal-btn {
+  background: none;
+  border: 1px solid var(--gold);
+  color: var(--gold-light);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.reveal-btn:hover { background: var(--gold); color: var(--black); }
 
 /* ===== ANIMATIONS ===== */
 .fade-up {
@@ -1019,11 +1033,15 @@ footer a:hover { text-decoration: underline; }
         <div class="contact-details">
           <div class="contact-detail">
             <span class="icon">💬</span>
-            <a href="https://wa.me/447594859759?text=Hi%2C%20I'm%20interested%20in%20getting%20a%20website%20built" target="_blank" rel="noopener">WhatsApp: 07594 859759</a>
+            <span id="reveal-whatsapp">
+              <button class="reveal-btn" onclick="revealContact('whatsapp')">Tap to open WhatsApp chat</button>
+            </span>
           </div>
           <div class="contact-detail">
             <span class="icon">📧</span>
-            <a href="mailto:hello@realfastwebsite.com">hello@realfastwebsite.com</a>
+            <span id="reveal-email">
+              <button class="reveal-btn" onclick="revealContact('email')">Tap to reveal email address</button>
+            </span>
           </div>
           <div class="contact-detail">
             <span class="icon">🌐</span>
@@ -1104,6 +1122,23 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { threshold: 0.1 });
   fadeEls.forEach(function(el) { observer.observe(el); });
 });
+</script>
+
+<!-- ===== CLICK-TO-REVEAL (anti-scraper) ===== -->
+<script>
+function revealContact(type) {
+  if (type === 'whatsapp') {
+    var p1 = '447'; var p2 = '594'; var p3 = '859759';
+    var msg = encodeURIComponent("Hi, I\u2019m interested in getting a website built");
+    var el = document.getElementById('reveal-whatsapp');
+    el.innerHTML = '<a href="https://wa.me/' + p1 + p2 + p3 + '?text=' + msg + '" target="_blank" rel="noopener" style="color:var(--gold-light);">WhatsApp: 0' + p2 + ' ' + p3 + '</a>';
+  }
+  if (type === 'email') {
+    var u = 'hell' + 'o'; var d = 'realfastwebsite' + '.com';
+    var el = document.getElementById('reveal-email');
+    el.innerHTML = '<a href="mai' + 'lto:' + u + '@' + d + '" style="color:var(--gold-light);">' + u + '@' + d + '</a>';
+  }
+}
 </script>
 
 </body>
