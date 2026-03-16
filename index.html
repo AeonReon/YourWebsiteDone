@@ -763,7 +763,12 @@ footer a:hover { text-decoration: underline; }
 }
 
 @media (max-width: 480px) {
-  .portfolio-grid { grid-template-columns: 1fr; }
+  .portfolio-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .portfolio-thumb { height: 120px; }
+  .portfolio-info { padding: 10px 12px; }
+  .portfolio-info h3 { font-size: 0.85rem; }
+  .portfolio-info p { font-size: 0.75rem; }
+  .mobile-br { display: block; }
 }
 
 /* ===== REVIEWS ===== */
@@ -842,6 +847,8 @@ footer a:hover { text-decoration: underline; }
   transition: background 0.2s, color 0.2s;
 }
 .reveal-btn:hover { background: var(--gold); color: var(--black); }
+
+.mobile-br { display: none; }
 
 /* ===== FAQ SECTION ===== */
 .faq {
@@ -962,7 +969,7 @@ footer a:hover { text-decoration: underline; }
 <div id="top"></div>
 <section class="section portfolio" id="portfolio" style="padding-top:60px;">
   <div class="container">
-    <h2 class="fade-up">Real Websites. <span class="gold">Real Businesses.</span></h2>
+    <h2 class="fade-up">Real Websites.<br class="mobile-br"> <span class="gold">Real Businesses.</span></h2>
     <p style="color:#bbb; margin-bottom:35px; font-size:1.05rem;" class="fade-up">Every one of these was built for a flat £197. Click to see them live.</p>
     <div class="portfolio-grid">
 
