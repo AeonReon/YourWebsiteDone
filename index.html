@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RealFastWebsite — A Complete Business Website for Just £197</title>
-<meta name="description" content="Get a professional, done-for-you business website for a one-time fee of £197. Zero hosting costs. Zero monthly fees. We build it, you review it, zero risk.">
+<meta name="description" content="Professional business websites for just £197 — built, hosted and delivered fast. Serving businesses across Northern Ireland including Coleraine, Belfast, Ballymena, Portstewart and beyond. No monthly fees. Zero risk.">
 
 <!-- Open Graph / Social Sharing -->
 <meta property="og:type" content="website">
@@ -18,6 +18,27 @@
 <meta name="twitter:image" content="https://www.realfastwebsite.com/images/hero.jpg">
 <link rel="canonical" href="https://www.realfastwebsite.com/">
 <meta name="robots" content="index, follow">
+
+<!-- FAQ Schema for Google rich results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How long does it take to build my website?","acceptedAnswer":{"@type":"Answer","text":"Typically 2–5 business days from when you send your details. We handle everything — design, copy, and technical setup — so you don't have to wait around."}},
+    {"@type":"Question","name":"Do I own the website once it's built?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once you pay, all the files are yours. We hand everything over — you're not locked into anything."}},
+    {"@type":"Question","name":"Do I need a domain name?","acceptedAnswer":{"@type":"Answer","text":"Not to get started. We can build and show you the site without one. When you're ready to go live, a .com typically costs around £10–15 per year from a registrar like Namecheap. We can help point it to your site."}},
+    {"@type":"Question","name":"What do I need to provide?","acceptedAnswer":{"@type":"Answer","text":"Just 5 photos, your business name, contact details, and any social media links. It takes about 5 minutes on your end — we handle everything else."}},
+    {"@type":"Question","name":"What if I don't like it?","acceptedAnswer":{"@type":"Answer","text":"Simple — you don't pay. We build it, show you the finished site, and only charge if you love it. No hard feelings, no awkward invoices."}},
+    {"@type":"Question","name":"Are there any monthly fees?","acceptedAnswer":{"@type":"Answer","text":"None. Hosting is completely free. You pay £197 once and that's it — no subscriptions, no surprises."}},
+    {"@type":"Question","name":"Is the website mobile-friendly?","acceptedAnswer":{"@type":"Answer","text":"Yes. Every site is fully responsive and tested across phones, tablets, and desktop before it's handed over."}},
+    {"@type":"Question","name":"Do you write the content for me?","acceptedAnswer":{"@type":"Answer","text":"Yes. Professional sales copywriting is included in the £197. You don't need to write a single word."}},
+    {"@type":"Question","name":"What about SEO?","acceptedAnswer":{"@type":"Answer","text":"Basic SEO is set up as standard — page title, meta description, image alt tags, and clean code so Google can find and index your site properly."}},
+    {"@type":"Question","name":"Do you work with businesses across Northern Ireland?","acceptedAnswer":{"@type":"Answer","text":"Yes — we work with businesses all across Northern Ireland including Coleraine, Portstewart, Ballymena, Ballycastle, Ballymoney, Belfast and everywhere in between. Everything is done remotely so location is never a barrier."}},
+    {"@type":"Question","name":"Can I make changes after the site is live?","acceptedAnswer":{"@type":"Answer","text":"Small text or photo updates are no problem — just message us. Larger redesigns would be quoted separately."}}
+  ]
+}
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -822,6 +843,87 @@ footer a:hover { text-decoration: underline; }
 }
 .reveal-btn:hover { background: var(--gold); color: var(--black); }
 
+/* ===== FAQ SECTION ===== */
+.faq {
+  background: var(--warm-white);
+  text-align: center;
+}
+
+.faq h2 { color: var(--charcoal); margin-bottom: 8px; }
+.faq-subhead { color: #666; font-size: 1.05rem; margin-bottom: 40px; }
+
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  text-align: left;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--warm-gray);
+  overflow: hidden;
+}
+
+.faq-item:first-child { border-top: 1px solid var(--warm-gray); }
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+}
+
+.faq-question span {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--charcoal);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--black);
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, background 0.3s;
+  line-height: 1;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  background: var(--gold-dark);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+}
+
+.faq-answer p {
+  padding: 0 0 20px;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.faq-item.open .faq-answer { max-height: 300px; }
+
 /* ===== ANIMATIONS ===== */
 .fade-up {
   opacity: 0;
@@ -1095,6 +1197,132 @@ footer a:hover { text-decoration: underline; }
   </div>
 </section>
 
+<!-- ===== FAQ ===== -->
+<section class="section faq" id="faq">
+  <div class="container">
+    <h2 class="fade-up">Common <span class="gold-dark">Questions</span></h2>
+    <p class="faq-subhead fade-up">Everything you need to know before you get started.</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span>How long does it take to build my website?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Typically 2–5 business days from when you send your details. We handle everything — design, copy, and technical setup — so you don't have to wait around.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span>Do I own the website once it's built?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Once you pay, all the files are yours. We hand everything over — you're not locked into anything.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span>Do I need a domain name?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Not to get started. We can build and show you the site without one. When you're ready to go live, a .com typically costs around £10–15 per year. We can help point it to your new site.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span>What do I need to provide?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Just 5 photos, your business name, contact details, and any social media links. It takes about 5 minutes on your end — we handle everything else.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span>What if I don't like it?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Simple — you don't pay. We build it, show you the finished site, and only charge if you love it. No hard feelings, no awkward invoices.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span>Are there any monthly fees?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>None. Hosting is completely free. You pay £197 once and that's it — no subscriptions, no surprises.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span>Is the website mobile-friendly?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Every site is fully responsive and tested across phones, tablets, and desktop before it's handed over.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span>Do you write the content for me?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes. Professional sales copywriting is included in the £197. You don't need to write a single word.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span>What about SEO?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Basic SEO is set up as standard — page title, meta description, image alt tags, and clean code so Google can find and index your site properly.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span>Do you work with businesses across Northern Ireland?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Yes — we work with businesses all across Northern Ireland including Coleraine, Portstewart, Ballymena, Ballycastle, Ballymoney, Belfast and everywhere in between. Everything is done remotely so location is never a barrier.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" onclick="toggleFaq(this)" aria-expanded="false">
+          <span>Can I make changes after the site is live?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>Small text or photo updates are no problem — just message us. Larger redesigns would be quoted separately.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;" class="fade-up">
+      <a href="#contact" class="cta-btn">Still have questions? Get in touch →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== CONTACT FORM ===== -->
 <section class="section contact" id="contact">
   <div class="container">
@@ -1104,6 +1332,7 @@ footer a:hover { text-decoration: underline; }
         <h2 style="color:var(--white);">Ready to Get <span class="gold">Your Website?</span></h2>
         <p>Drop us your details and we'll get back to you within 24 hours. No payment needed. No pressure. We build it, show you, and you decide.</p>
         <p><strong style="color:var(--gold);">If you don't love it, you don't pay.</strong></p>
+        <p style="margin-top:14px; font-size:0.95rem; color:#999;">Serving small businesses across Northern Ireland — Coleraine, Belfast, Ballymena, Portstewart, Ballycastle, Ballymoney and beyond.</p>
 
         <div class="contact-details">
           <div class="contact-detail">
@@ -1197,6 +1426,24 @@ document.addEventListener('DOMContentLoaded', function() {
   }, { threshold: 0.1 });
   fadeEls.forEach(function(el) { observer.observe(el); });
 });
+</script>
+
+<!-- ===== FAQ ACCORDION ===== -->
+<script>
+function toggleFaq(btn) {
+  var item = btn.parentElement;
+  var isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(function(el) {
+    el.classList.remove('open');
+    el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+  });
+  // Open this one if it was closed
+  if (!isOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
 </script>
 
 <!-- ===== CLICK-TO-REVEAL (anti-scraper) ===== -->
