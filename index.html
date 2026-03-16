@@ -970,7 +970,7 @@ footer a:hover { text-decoration: underline; }
 <section class="section portfolio" id="portfolio" style="padding-top:60px;">
   <div class="container">
     <h2 class="fade-up"><span style="white-space:nowrap">Real Websites.</span> <span class="gold" style="white-space:nowrap">Real Businesses.</span></h2>
-    <p style="color:#bbb; margin-bottom:35px; font-size:1.05rem;" class="fade-up">Every one of these was built for a flat £197. Click to see them live.</p>
+    <p style="color:#bbb; margin-bottom:35px; font-size:1.05rem;" class="fade-up">Every one of these was built for a flat £197.<br class="mobile-br"> Click to see them live.</p>
     <div class="portfolio-grid">
 
       <a href="https://tccommercials.vercel.app" target="_blank" rel="noopener" class="portfolio-card fade-up">
@@ -1363,7 +1363,12 @@ footer a:hover { text-decoration: underline; }
 
       <div class="contact-form fade-up">
         <h3>Get Your Free Website Preview</h3>
-        <form action="https://api.web3forms.com/submit" method="POST">
+        <div id="form-success" style="display:none; text-align:center; padding:40px 10px;">
+          <div style="font-size:3rem; margin-bottom:14px;">✅</div>
+          <h3 style="color:#4caf50; margin-bottom:10px; font-size:1.4rem;">Message sent!</h3>
+          <p style="color:#bbb; font-size:1rem;">We'll be in touch within 24 hours. Talk soon.</p>
+        </div>
+        <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
           <input type="hidden" name="access_key" value="b5edaf3f-1c5f-42f4-b219-70218bf7b3e1">
           <input type="hidden" name="subject" value="New Website Enquiry — RealFastWebsite">
           <input type="hidden" name="from_name" value="RealFastWebsite Form">
@@ -1470,5 +1475,29 @@ function revealContact(type) {
 }
 </script>
 
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var btn = this.querySelector('button[type="submit"]');
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  try {
+    var res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(this) });
+    var json = await res.json();
+    if (json.success) {
+      document.getElementById('form-success').style.display = 'block';
+      this.style.display = 'none';
+    } else {
+      btn.textContent = 'Send My Details — Let\'s Go →';
+      btn.disabled = false;
+      alert('Something went wrong — please try again.');
+    }
+  } catch(err) {
+    btn.textContent = 'Send My Details — Let\'s Go →';
+    btn.disabled = false;
+    alert('Something went wrong — please try again.');
+  }
+});
+</script>
 </body>
 </html>
