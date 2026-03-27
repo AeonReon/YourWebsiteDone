@@ -1424,12 +1424,6 @@ footer a:hover { text-decoration: underline; }
             </span>
           </div>
           <div class="contact-detail">
-            <span class="icon">📧</span>
-            <span id="reveal-email">
-              <button class="reveal-btn" onclick="revealContact('email')">Tap to reveal email address</button>
-            </span>
-          </div>
-          <div class="contact-detail">
             <span class="icon">🌐</span>
             <span style="color:#444;">www.realfastwebsite.com</span>
           </div>
@@ -1540,11 +1534,6 @@ function revealContact(type) {
     var msg = encodeURIComponent("Hi, I\u2019m interested in getting a website built");
     var el = document.getElementById('reveal-whatsapp');
     el.innerHTML = '<a href="https://wa.me/' + p1 + p2 + p3 + '?text=' + msg + '" target="_blank" rel="noopener" style="color:var(--gold-light);">WhatsApp: 0' + p2 + ' ' + p3 + '</a>';
-  }
-  if (type === 'email') {
-    var u = 'hell' + 'o'; var d = 'realfastwebsite' + '.com';
-    var el = document.getElementById('reveal-email');
-    el.innerHTML = '<a href="mai' + 'lto:' + u + '@' + d + '" style="color:var(--gold-light);">' + u + '@' + d + '</a>';
   }
 }
 </script>
